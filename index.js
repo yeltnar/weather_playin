@@ -149,7 +149,7 @@ const getDaysObj = (()=>{
         const cache_id = `${year}/${month}/${date}`;
 
         if( date_cache_table[cache_id] === undefined ){
-            const date_obj = new Date(`${month}/${date}/${year} 13:00:00 GMT-0500`)
+            const date_obj = new Date(`${month}/${date}/${year} 12:00:00 ${weather_obj.timezone_offset/(60*60)}`); // use reply timezone to calculate the utc time
             const obj_dt = date_obj.getTime()/1000;
         
             date_cache_table[cache_id] = weather_obj.daily.reduce((acc,cur,i,arr)=>{
